@@ -1,0 +1,4 @@
+rootProject.name = 'PluginTrain'
+include 'PluginTrainCore'
+include 'PluginTrainApi'
+include 'PluginTrainTest'

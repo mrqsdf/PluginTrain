@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'fr.mrqsdf'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    //add PluginTrainApi module dependencies
+    implementation project(':PluginTrainApi')
+
+    implementation 'org.yaml:snakeyaml:2.3'
+
+}
+
+test {
+    useJUnitPlatform()
+}
