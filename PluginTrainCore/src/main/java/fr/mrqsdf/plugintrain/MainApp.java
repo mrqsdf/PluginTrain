@@ -1,13 +1,19 @@
 package fr.mrqsdf.plugintrain;
 
+import fr.mrqsdf.plugintrain.api.IModelPlugin;
+import fr.mrqsdf.plugintrain.core.PluginManager;
+
 public class MainApp {
     public static void main(String[] args) throws Exception {
-        PluginLoader loader = new PluginLoader();
-        System.out.println("Chargement des plugins...");
-        for (IModelPlugin p : loader.load()) {
-            System.out.println("=========================================");
-            System.out.println("Plugin trouvé : " + p.getClass().getSimpleName());
-            p.printText();
-        }
+        PluginManager manager = new PluginManager();
+        PluginLoader loader   = new PluginLoader(manager);
+
+        loader.loadAll();
+
+        // --------------------------------------------------------------------------------
+        // Application principale...
+        // --------------------------------------------------------------------------------
+
+        Runtime.getRuntime().addShutdownHook(new Thread(manager::shutdown));
     }
 }
