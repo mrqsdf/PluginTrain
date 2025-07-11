@@ -13,6 +13,7 @@ public final class PluginDescription {
     public final String version;
     public final String apiVersion;
     public final List<String> depends;
+    public final String description;
 
     private static final Pattern DEP_PATTERN =
             Pattern.compile("^\\s*([\\w-]+)(?:\\s*>=\\s*([\\d.]+))?\\s*$");
@@ -25,6 +26,7 @@ public final class PluginDescription {
         version    = (String) map.getOrDefault("version", "0.0.0");
         apiVersion = (String) map.getOrDefault("api-version", "1.0");
         depends    = (List<String>) map.getOrDefault("depends", List.of());
+        description = (String) map.getOrDefault("description", "Aucune description fournie");
     }
 
     /** Extrait simplement le nom d’un élément depends ("logger >=1.1" -> "logger"). */

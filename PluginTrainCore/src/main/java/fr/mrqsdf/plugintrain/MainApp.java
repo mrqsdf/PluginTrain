@@ -15,5 +15,19 @@ public class MainApp {
         // --------------------------------------------------------------------------------
 
         Runtime.getRuntime().addShutdownHook(new Thread(manager::shutdown));
+
+        int i = 0;
+
+        while (true){
+            i++;
+            System.out.println("Application en cours d'exécution... " + i);
+            Thread.sleep(1000);
+            if (i == 5) {
+                manager.shutdown(); // not necessary if you use the shutdown hook
+                System.out.println("Tous les plugins ont été désactivés.");
+                break; // Sortie de la boucle pour terminer l'application
+            }
+        }
+
     }
 }
